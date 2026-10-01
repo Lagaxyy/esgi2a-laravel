@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        "name" => "Arthur LAO",
+        "competences" => ["Laravel", "Blade", "TailwindCSS"],
+        "available" => true,
+    ]);
 });
 
 Route::view('/about', 'about')->name('about');

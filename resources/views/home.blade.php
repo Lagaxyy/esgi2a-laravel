@@ -2,13 +2,15 @@
     <!-- En-tête de la page -->
     <section class="grid items-center gap-10 md:grid-cols-[1fr_auto]">
         <div>
-            <p class="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-emerald-200">
-                <span class="size-2 rounded-full bg-emerald-500"></span>
-                Disponible pour une alternance
-            </p>
+            @if ($available ?? false)
+                <p class="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-emerald-200">
+                    <span class="size-2 rounded-full bg-emerald-500"></span>
+                    Disponible pour une alternance
+                </p>
+            @endif
 
             <h1 class="text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl">
-                Bonjour, je suis <span class="text-indigo-600">Ada Lovelace</span>
+                Bonjour, je suis <span class="text-indigo-600">{{ $name }}</span>
             </h1>
             <p class="mt-6 max-w-2xl text-lg leading-relaxed text-stone-600">
                 Étudiant·e en développement web à l'ESGI. Je conçois des sites et des applications avec PHP et Laravel,
@@ -35,18 +37,11 @@
     <section class="mt-20">
         <h2 class="text-2xl font-semibold tracking-tight text-stone-900">Mes compétences</h2>
         <ul class="mt-6 flex flex-wrap gap-3">
-            <li class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-stone-200">
-                HTML
-            </li>
-            <li class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-stone-200">
-                CSS
-            </li>
-            <li class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-stone-200">
-                PHP
-            </li>
-            <li class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-stone-200">
-                Laravel
-            </li>
+            @foreach ($competences as $competence)
+                <li class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-stone-200">
+                    {{ $competence }}
+                </li>
+            @endforeach
         </ul>
     </section>
 
