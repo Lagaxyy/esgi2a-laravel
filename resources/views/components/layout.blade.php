@@ -27,7 +27,7 @@
             </a>
 
             <div class="flex gap-1">
-                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">Accueil</x-nav-link>
+                <x-nav-link class="shadow-lg" :href="route('home')" :active="request()->routeIs('home')">Accueil</x-nav-link>
                 <x-nav-link :href="route('about')" :active="request()->routeIs('about')">À propos</x-nav-link>
                 <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">Contact</x-nav-link>
             </div>
