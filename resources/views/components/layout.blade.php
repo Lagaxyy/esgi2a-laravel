@@ -13,10 +13,12 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet">
 
     <!-- Tailwind CSS chargé depuis un CDN (pratique pour débuter, pas pour la production) -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
         @theme { --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif; }
-    </style>
+    </style> --}}
+
+    @vite(["resources/css/app.css", "resources/js/app.js"])
 </head>
 <body class="flex min-h-screen flex-col bg-stone-50 font-sans text-stone-800 antialiased">
     <header class="sticky top-0 z-10 border-b border-stone-200 bg-white/80 backdrop-blur">
