@@ -1,4 +1,4 @@
-<x-layout title="Contact">
+<x-layout title="Contact · Portfolio">
     <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600">Contact</p>
     <h1 class="mt-2 text-4xl font-bold tracking-tight text-stone-900">Travaillons ensemble</h1>
     <p class="mt-4 max-w-2xl text-lg text-stone-600">

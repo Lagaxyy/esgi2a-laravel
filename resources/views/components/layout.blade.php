@@ -1,7 +1,6 @@
 @props([
-  "title" => "Portfolio"
+    'title' => 'Portfolio'
 ])
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,12 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet">
 
     <!-- Tailwind CSS chargé depuis un CDN (pratique pour débuter, pas pour la production) -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-        @theme { --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif; }
-    </style> --}}
-
-    @vite(["resources/css/app.css", "resources/js/app.js"])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="flex min-h-screen flex-col bg-stone-50 font-sans text-stone-800 antialiased">
     <header class="sticky top-0 z-10 border-b border-stone-200 bg-white/80 backdrop-blur">
@@ -29,15 +23,16 @@
             </a>
 
             <div class="flex gap-1">
-                <x-nav-link class="shadow-lg" :href="route('home')" :active="request()->routeIs('home')">Accueil</x-nav-link>
-                <x-nav-link :href="route('about')" :active="request()->routeIs('about')">À propos</x-nav-link>
+                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">Accueil</x-nav-link>
+                <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">Projets</x-nav-link>
+                <x-nav-link :href="route('about')" :active="request()->routeIs('about')">A propos</x-nav-link>
                 <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">Contact</x-nav-link>
             </div>
         </nav>
     </header>
 
     <main class="mx-auto w-full max-w-5xl flex-1 px-6 py-12 sm:py-16">
-      {{ $slot }}
+        {{ $slot }}
     </main>
 
     <footer class="border-t border-stone-200 bg-white">

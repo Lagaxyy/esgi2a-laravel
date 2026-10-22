@@ -1,4 +1,4 @@
-<x-layout title="À propos">
+<x-layout title="A Propos · Portfolio">
     <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600">À propos</p>
     <h1 class="mt-2 text-4xl font-bold tracking-tight text-stone-900">Qui suis-je ?</h1>
 
@@ -6,8 +6,7 @@
         <div class="space-y-5 text-lg leading-relaxed text-stone-600">
             <p>
                 Étudiant·e en 2e année à l'ESGI, je me spécialise dans le développement web.
-                Ce portfolio est construit avec <span class="font-semibold text-stone-900">Laravel</span>, séance après
-                séance.
+                Ce portfolio est construit avec <span class="font-semibold text-stone-900">Laravel</span>, séance après séance.
             </p>
             <p>
                 J'aime comprendre comment les choses fonctionnent : du HTML affiché dans le navigateur
@@ -36,48 +35,35 @@
                 </li>
             </ol>
         </div>
+
+        <section class="mt-16">
+            <h2 class="text-2xl font-bold tracking-tight text-stone-900">Questions fréquentes</h2>
+
+            <div class="mt-6 divide-y divide-stone-200 rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
+                @foreach ($faqs as $faq)
+                    <div x-data="{
+                        open: false,
+                    }">
+                        <button
+                            type="button"
+                            class="flex w-full items-center justify-between px-6 py-4 text-left font-medium text-stone-900"
+                            x-on:click="open = !open"
+                        >
+                            {{ $faq['question'] }}
+                            <span class="text-indigo-600 transition-all">+</span>
+                        </button>
+                        <div
+                            class="px-6 pb-4 text-stone-600"
+                            x-show="open"
+                            x-collapse
+                            x-cloak
+                        >
+                            {{ $faq['answer'] }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
     </div>
-
-    <section class="mt-16">
-        <h2 class="text-2xl font-bold tracking-tight text-stone-900">Questions fréquentes</h2>
-
-        <div class="mt-6 divide-y divide-stone-200 rounded-2xl bg-white shadow-sm ring-1 ring-stone-200">
-            <div x-data="{
-                open: false,
-                init() {
-                    console.log('hello world, i am ', this.open)
-                }
-            }">
-                <button type="button"
-                    class="flex w-full items-center justify-between px-6 py-4 text-left font-medium text-stone-900"
-                    x-on:click = "open = !open">
-                    Pourquoi Laravel ?
-                    <span class="text-indigo-600 transition-all">+</span>
-                </button>
-                <div class="px-6 pb-4 text-stone-600" x-show="open" x-collapse x-cloak>
-                    Parce qu'il fournit tout le nécessaire : routes, vues, base de données, sécurité.
-                </div>
-            </div>
-            <div>
-                <button type="button"
-                    class="flex w-full items-center justify-between px-6 py-4 text-left font-medium text-stone-900">
-                    Quelles technologies utilisez-vous ?
-                    <span class="text-indigo-600">+</span>
-                </button>
-                <div class="px-6 pb-4 text-stone-600">
-                    Laravel pour le back-end, Tailwind CSS pour le style, Alpine.js pour l'interactivité.
-                </div>
-            </div>
-            <div>
-                <button type="button"
-                    class="flex w-full items-center justify-between px-6 py-4 text-left font-medium text-stone-900">
-                    Êtes-vous disponible pour un stage ?
-                    <span class="text-indigo-600">+</span>
-                </button>
-                <div class="px-6 pb-4 text-stone-600">
-                    Oui, contactez-moi via la page Contact.
-                </div>
-            </div>
-        </div>
-    </section>
 </x-layout>

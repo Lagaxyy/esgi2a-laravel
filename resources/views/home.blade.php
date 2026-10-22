@@ -2,7 +2,7 @@
     <!-- En-tête de la page -->
     <section class="grid items-center gap-10 md:grid-cols-[1fr_auto]">
         <div>
-            @if ($available ?? false)
+            @if($available ?? false)
                 <p class="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-emerald-200">
                     <span class="size-2 rounded-full bg-emerald-500"></span>
                     Disponible pour une alternance
@@ -37,12 +37,33 @@
     <section class="mt-20">
         <h2 class="text-2xl font-semibold tracking-tight text-stone-900">Mes compétences</h2>
         <ul class="mt-6 flex flex-wrap gap-3">
-            @foreach ($competences as $competence)
+            @foreach($competences as $competence)
                 <li class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-stone-200">
                     {{ $competence }}
                 </li>
             @endforeach
         </ul>
+    </section>
+
+    <!-- Projets récents : attend $projects (3 projets maximum) -->
+    <section class="mt-20">
+        <div class="flex items-end justify-between gap-4">
+            <h2 class="text-2xl font-semibold tracking-tight text-stone-900">Projets récents</h2>
+            <a href="{{ route('projects.index') }}" class="text-sm font-semibold text-indigo-600 hover:text-indigo-500">Tous les projets →</a>
+        </div>
+
+        <div class="mt-6 grid gap-6 sm:grid-cols-3">
+            @forelse ($projects as $project)
+                <article class="flex flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-200">
+                    <x-status-badge :status="$project['status']" />
+                    <h3 class="mt-4 font-semibold text-stone-900">{{ $project['title'] }}</h3>
+                    <p class="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{{ $project['description'] }}</p>
+                    <a href="{{ route('projects.show', $project['id']) }}" class="mt-4 text-sm font-semibold text-indigo-600 hover:text-indigo-500">Voir le projet →</a>
+                </article>
+            @empty
+                <p class="text-stone-500 sm:col-span-3">Aucun projet pour le moment.</p>
+            @endforelse
+        </div>
     </section>
 
     <!-- Ce que je fais -->
